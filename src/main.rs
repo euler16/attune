@@ -51,6 +51,12 @@ fn main() {
                 Err(error) => {
                     if error.kind() == std::io::ErrorKind::NotFound {
                         println!("Secondary file does not exist; it will be created")
+                    } else {
+                        eprintln!(
+                            "Could not read secondary path: {}: {}",
+                            secondary.display(),
+                            error
+                        );
                     }
                 }
             }
